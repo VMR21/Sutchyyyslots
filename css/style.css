@@ -20,7 +20,7 @@
   --color-bg-tertiary: #1a1a1a;
   
   /* Accent Colors */
-  --color-accent: #7C3AED;
+  --color-accent: #3b82f6;
   --color-accent-hover: #6D28D9;
   --color-accent-active: #5B21B6;
   
@@ -33,7 +33,7 @@
   /* Border Colors */
   --color-border-default: #2a2a2a;
   --color-border-hover: #3a3a3a;
-  --color-border-focus: #7C3AED;
+  --color-border-focus: #3b82f6;
   
   /* Surface Colors */
   --color-surface-card: #0a0a0a;
@@ -51,10 +51,10 @@
   --white-color: #ffffff;
   --black-color: #000000;
   --text-color: #ffffff;
-  --red-color-bg-1: #7C3AED;
-  --red-color-bg-2: #7C3AED;
+  --red-color-bg-1: #3b82f6;
+  --red-color-bg-2: #3b82f6;
   --red-color-bg-3: #000000;
-  --red-color-bg-4: #7C3AED;
+  --red-color-bg-4: #3b82f6;
 }
 
 body {
@@ -1089,7 +1089,7 @@ header span i {
 }
 
 .swiperSection .boxContent .copyReward {
-  background: #7C3AED49 !important;
+  background: #3b82f649 !important;
   padding-top: 0.5rem;
   padding-left: 1rem;
   padding-right: 1rem;
@@ -1687,11 +1687,11 @@ header span i {
   color: #122347;
   z-index: 0;
   top: 0;
-  background: -webkit-linear-gradient(#7C3AED45, var(--text-color));
+  background: -webkit-linear-gradient(#3b82f645, var(--text-color));
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  text-shadow: 0 0 30px #7C3AED1a;
+  text-shadow: 0 0 30px #3b82f61a;
 }
 
 .gallery .timeWatch .stopWatch {
@@ -2995,7 +2995,7 @@ html {
 }
 
 .section-title-compact i {
-    color: #7C3AED;
+    color: #3b82f6;
     font-size: 14px;
 }
 
@@ -3040,7 +3040,7 @@ html {
 
 .wallet-row input:focus {
     outline: none;
-    border-color: #7C3AED;
+    border-color: #3b82f6;
     background: rgba(255, 255, 255, 0.15);
 }
 
@@ -3049,7 +3049,7 @@ html {
 }
 
 .save-btn-compact {
-    background: #7C3AED;
+    background: #3b82f6;
     color: white;
     border: none;
     padding: 8px 12px;
@@ -3099,7 +3099,7 @@ html {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #7C3AED;
+    color: #3b82f6;
     font-size: 16px;
 }
 
@@ -3295,7 +3295,7 @@ html {
 
 .progress-fill {
     height: 100%;
-    background: #7C3AED;
+    background: #3b82f6;
     width: 33.33%;
     transition: width 0.3s ease;
 }
@@ -3323,7 +3323,7 @@ html {
 .step-icon {
     width: 50px;
     height: 50px;
-    background: #7C3AED;
+    background: #3b82f6;
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -3364,7 +3364,7 @@ html {
 
 .input-group input:focus {
     outline: none;
-    border-color: #7C3AED;
+    border-color: #3b82f6;
     background: rgba(255, 255, 255, 0.15);
 }
 
@@ -3410,7 +3410,7 @@ html {
 }
 
 .point-text strong {
-    color: #7C3AED;
+    color: #3b82f6;
     font-weight: 600;
 }
 
@@ -3433,7 +3433,7 @@ html {
 }
 
 .setup-btn.primary {
-    background: #7C3AED;
+    background: #3b82f6;
     color: white;
 }
 
