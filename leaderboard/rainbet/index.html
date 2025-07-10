@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SutchyyySlots | Rainbet Leaderboard</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        xintegrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="icon" href="https://i.postimg.cc/PxjzYRr0/image.png" type="image/png">
+    <meta name="description" content="SutchyyySlots - Exclusive wager races!">
+    <meta name="author" content="SutchyyySlots">
+    
+    <style>
+        /* Rules Button */
+        .rules-btn {
+            margin-left: 15px;
+            background: linear-gradient(135deg, #b7a101 0%, #ffd500 100%);
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            padding: 8px 16px;
+            border-radius: 5px;
+            font-weight: 600;
+        }
+        
+        .rules-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 213, 0, 0.3);
+        }
+        
+        /* Modal Styles */
+        #rulesModal {
+            position: fixed;
+            z-index: 99999;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.8);
+            display: none;
+        }
+        
+        #rulesModal.show {
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+        }
+        
+        #rulesModal .modal-content {
+            background: #1a1a1a;
+            border-radius: 12px;
+            max-width: 600px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            border: 1px solid #333;
+            margin: 20px;
+            animation: modalSlideIn 0.3s ease;
+        }
+        
+        @keyframes modalSlideIn {
+            from {
+                transform: translateY(-30px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        .modal-close:hover {
+            color: #ffd500 !important;
+            background: rgba(255, 213, 0, 0.1) !important;
+            transform: rotate(90deg);
+        }
+        
+        .modal-header {
+            padding: 20px 30px;
+            border-bottom: 1px solid var(--color-border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .modal-header h2 {
+            color: var(--color-text-primary, #ffffff);
+            margin: 0;
+            font-size: 24px;
+        }
+        
+        .modal-close {
+            color: var(--color-text-tertiary, #999);
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s ease;
+            line-height: 1;
+        }
+        
+        .modal-close:hover {
+            color: var(--color-text-primary, #ffffff);
+        }
+        
+        .modal-body {
+            padding: 30px;
+        }
+        
+        .modal-body h3 {
+            color: var(--color-primary, #ffd500);
+            margin-bottom: 20px;
+            font-size: 20px;
+        }
+        
+        .rules-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .rules-list li {
+            color: var(--color-text-secondary, #cccccc);
+            padding: 12px 0;
+            border-bottom: 1px solid var(--color-border, #333);
+            line-height: 1.6;
+        }
+        
+        .rules-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .rules-list li:before {
+            content: "•";
+            color: var(--color-primary);
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+            margin-right: 0.5em;
+        }
+        
+        @media (max-width: 600px) {
+            .modal-content {
+                margin: 10px;
+            }
+            
+            .modal-header {
+                padding: 15px 20px;
+            }
+            
+            .modal-body {
+                padding: 20px;
+            }
+        }
+    </style>
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="/">
+    <meta property="og:title" content="SutchyyySlots">
+    <meta property="og:description" content="SutchyyySlots - Exclusive wager races!">
+    <meta property="og:image"
+        content="/">
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="/">
+    <meta property="twitter:title" content="SutchyyySlots">
+    <meta property="twitter:description" content="SutchyyySlots - Exclusive wager races!">
+    <meta property="twitter:image"
+        content="/">
+</head>
+
+<body>
+    <!-- Rules Modal -->
+    <div id="rulesModal" style="position: fixed; z-index: 99999; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.85); display: none; backdrop-filter: blur(5px);">
+        <div style="position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); background: linear-gradient(135deg, #1f1f1f 0%, #2a2a2a 100%); border-radius: 16px; max-width: 600px; width: 90%; max-height: 90vh; overflow: hidden; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8), 0 0 100px rgba(255, 213, 0, 0.1); border: 1px solid rgba(255, 213, 0, 0.2);">
+            <div class="modal-header" style="background: linear-gradient(135deg, rgba(183, 161, 1, 0.1) 0%, rgba(255, 213, 0, 0.05) 100%); border-bottom: 1px solid rgba(255, 213, 0, 0.2); padding: 24px 30px;">
+                <h2 style="color: #ffd500; margin: 0; font-size: 28px; font-weight: 700; text-shadow: 0 2px 10px rgba(255, 213, 0, 0.3);">Rainbet Leaderboard Rules</h2>
+                <span class="modal-close" onclick="closeRulesModal()" style="color: #999; font-size: 32px; font-weight: 300; cursor: pointer; transition: all 0.3s ease; line-height: 1; position: absolute; right: 20px; top: 20px; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: rgba(255, 255, 255, 0.05);">×</span>
+            </div>
+            <div class="modal-body" style="padding: 30px; overflow-y: auto; max-height: calc(90vh - 100px);">
+                <h3 style="color: #ffd500; margin-bottom: 20px; font-size: 20px; font-weight: 600;">Disclaimer</h3>
+                <ul class="rules-list" style="list-style: none; padding: 0; margin: 0;">
+                    <li style="color: #e0e0e0; padding: 16px 20px; background: rgba(255, 255, 255, 0.03); border-radius: 8px; line-height: 1.6; border-left: 3px solid #ffd500; font-size: 15px;">Every bet on code SutchyyySlots is counted.<span style="color: #999;"></span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="bg-gradient"></div>
+    <canvas id="particleCanvas"></canvas>
+
+    <!-- New Redesigned Header -->
+    <header class="header-v2">
+        <div class="header-wrapper">
+            <div class="logo-area">
+                <a href="/">
+                    <img src="https://i.postimg.cc/PxjzYRr0/image.png" alt="SutchyyySlots" class="header-logo">
+                </a>
+                <div class="live-status">
+                    <button id="liveButton" class="live-button offline">
+                        <img src="https://i.postimg.cc/vT6Yy35H/image.png" alt="Kick" class="kick-icon">
+                        <span>OFFLINE</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="nav-area desktop-nav">
+                <a href="/" class="nav-item">
+                    <i class="fa-solid fa-house"></i>
+                    <span>Home</span>
+                </a>
+                <a href="/leaderboard" class="nav-item active">
+                    <i class="fa-solid fa-trophy"></i>
+                    <span>Leaderboards</span>
+                </a>
+            </div>
+
+            <div class="menu-toggle">
+                <button onclick="openNav()" aria-label="Open menu">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile menu overlay -->
+        <div id="myNav" class="overlay">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+            <div class="overlay-content">
+                <a href="/">
+                    <i class="fa-solid fa-house"></i>
+                    <span>Home</span>
+                </a>
+                <a href="/leaderboard">
+                    <i class="fa-solid fa-trophy"></i>
+                    <span>Leaderboards</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <section class="swiperSection">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="boxContent fade-in">
+                        <h4 class="center" id="leaderboard-heading">My Leaderboards</h4>
+                    </div>
+                    <div class="swiperContent">
+                        <div class="paymentBtn d-flex align-center justify-center scale-in" id="gf-BtnContainer">
+                            <button class="gf-btn stagger-item" onclick="window.location.href='/leaderboard/rainbet'">
+                                <img src="https://i.postimg.cc/mthzQ70c/image.png" alt="Roobet" class="img-fluid paymentLogo">
+                            </button>
+    
+                        </div>
+
+                        <div class="gallery sets">
+                            <div class="gf-column bollywood show">
+                                <div class="contentSwiperTop fade-in">
+                                    <div class="modelButtons d-flex align-center justify-center">
+                                        <p class="btnPara" id="site-code">
+                                            CODE: LOADING...</p>
+                                        <button class="btnPara rules-btn" id="rules-btn" style="display: none;">
+                                            <i class="fa-solid fa-info-circle"></i> RULES
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="row gridRow d-flex align-center justify-center">
+                                    <div class="box-1 box stagger-item">
+                                        <div class="imgNumberBox">
+                                            <img src="https://i.postimg.cc/sXFPrDBk/rainbetlogo.png" alt="" class="img-fluid" id="user-2-img">
+                                            <div class="boxNumber">
+                                                <p>2</p>
+                                                <i class="fa-solid fa-diamond"></i>
+                                            </div>
+                                        </div>
+                                        <h1 class="mainHeading" id="user-2-name">...</h1>
+                                        <p class="mainPara">Wagered</p>
+                                        <div class="imgprice d-flex align-center justify-center">
+                                            <img src="" alt="" class="coin-icon" id="coin-icon-2">
+                                            <p id="user-2-wagered">0.00</p>
+                                        </div>
+                                        <div class="underlineTextLogo d-flex align-center">
+                                            <div class="underline"></div>
+                                        </div>
+
+                                        <div class="priceBtn d-flex align-center justify-center">
+                                            <img src="" alt="" class="coin-icon" id="prize-coin-icon-2">
+                                            <p id="user-2-price">0.00</p>
+                                        </div>
+                                    </div>
+                                    <div class="box-2 box stagger-item">
+                                        <div class="imgNumberBox">
+                                            <img src="https://i.postimg.cc/sXFPrDBk/rainbetlogo.png" alt="" class="img-fluid" id="user-1-img">
+                                            <div class="boxNumber">
+                                                <p>1</p>
+                                                <i class="fa-solid fa-diamond"></i>
+                                            </div>
+                                        </div>
+                                        <h1 class="mainHeading" id="user-1-name">...</h1>
+                                        <p class="mainPara">Wagered</p>
+                                        <div class="imgprice d-flex align-center justify-center">
+                                            <img src="" alt="" class="coin-icon" id="coin-icon-1">
+                                            <p id="user-1-wagered">0.00</p>
+                                        </div>
+                                        <div class="underlineTextLogo d-flex align-center">
+                                            <div class="underline"></div>
+                                        </div>
+
+                                        <div class="priceBtn d-flex align-center justify-center">
+                                            <img src="" alt="" class="coin-icon" id="prize-coin-icon-1">
+                                            <p id="user-1-price">0.00</p>
+                                        </div>
+                                    </div>
+                                    <div class="box-3 box stagger-item">
+                                        <div class="imgNumberBox">
+                                            <img src="https://i.postimg.cc/sXFPrDBk/rainbetlogo.png" alt="" class="img-fluid" id="user-3-img">
+                                            <div class="boxNumber">
+                                                <p>3</p>
+                                                <i class="fa-solid fa-diamond"></i>
+                                            </div>
+                                        </div>
+                                        <h1 class="mainHeading" id="user-3-name">...</h1>
+                                        <p class="mainPara">Wagered</p>
+                                        <div class="imgprice d-flex align-center justify-center">
+                                            <img src="" alt="" class="coin-icon" id="coin-icon-3">
+                                            <p id="user-3-wagered">0.00</p>
+                                        </div>
+                                        <div class="underlineTextLogo d-flex align-center">
+                                            <div class="underline"></div>
+                                        </div>
+
+                                        <div class="priceBtn d-flex align-center justify-center">
+                                            <img src="" alt="" class="coin-icon" id="prize-coin-icon-3">
+                                            <p id="user-3-price">0.00</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="timeSection slide-in-left">
+                                    <div class="col-12">
+                                        <div class="underlineHaeding d-flex align-center justify-center">
+                                            <div class="underline"></div>
+                                            <h1>ENDING IN</h1>
+                                            <div class="underline"></div>
+                                        </div>
+
+                                        <div class="count-down">
+                                            <div class="container">
+                                                <div class="row">
+                                                    <div class="countdown col-2">
+                                                        <p id="end-date-display" style="text-align: center; margin-top: 10px;"></p>
+                                                        <div class="counter">
+                                                            <span class="days">00</span>
+                                                            <div class="label">Days</div>
+                                                        </div>
+                                                        <div class="counter">
+                                                            <span class="hours">00</span>
+                                                            <div class="label">Hours</div>
+                                                        </div>
+                                                        <div class="counter">
+                                                            <span class="minutes">00</span>
+                                                            <div class="label">Minutes</div>
+                                                        </div>
+                                                        <div class="counter">
+                                                            <span class="seconds">00</span>
+                                                            <div class="label">Seconds</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row leaderBoardTable fade-in">
+                                    <div class="col-12" style="overflow-x: auto;">
+                                        <table id="customers">
+                                            <tr>
+                                                <th>Place</th>
+                                                <th>User</th>
+                                                <th>WAGERED</th>
+                                                <th>Reward</th>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+
+                                <!-- Removed Previous Results button -->
+                                <!-- <div class="btnPrivious fade-in">
+                                    <a href="#" id="prev-results-link">Previous Results</a>
+                                </div> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-compact">
+                <div class="footer-main">
+                    <div class="social-icons">
+                        <a href="https://www.instagram.com/sutchyyyslots" aria-label="Instagram">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+                        <a href="https://discord.gg/6FEn66ymvc" aria-label="Discord">
+                            <i class="fa-brands fa-discord"></i>
+                        </a>
+                    </div>
+                    <div class="footer-links">
+                        <a href="/">Home</a>
+                        <a href="/leaderboard">Leaderboards</a>
+                        <a href="https://www.gambleaware.org/">BeGambleAware</a>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p class="disclaimer">Gamble responsibly (18+). We do not take responsibility for any losses from
+                        gambling sites linked or promoted on our website.</p>
+                    <p class="copyright">© 2025 SutchyyySlots</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/js/script.js"></script>
+    <script>
+        // Site configuration
+        const siteConfig = {
+            rainbet: {
+                name: 'Rainbet',
+                code: 'SutchyyySlots',
+                url: 'https://rainbet.com/?r=Sutchyyyslots',
+                coinIcon: '', 
+                coinSymbol: '$',
+                // Define reward structure based on rank
+                rewardStructure: {
+                    1: 150,
+                    2: 75,
+                    3: 50,
+                    4: 35, 
+                    5: 20,
+                    6: 15,
+                    7: 10,
+                    8: 10,
+                    9: 10,
+                    10: 10,
+                }
+            },
+        };
+
+        // Get current site from URL
+        function getCurrentSite() {
+            const path = window.location.pathname;
+            const match = path.match(/\/leaderboard\/(\w+)/);
+            return match ? match[1] : 'rainbet'; 
+        }
+
+        // Update active button
+        function updateActiveButton() {
+            const site = getCurrentSite();
+            document.querySelectorAll('.gf-btn').forEach(btn => {
+                btn.classList.remove('gf-btn-active');
+                const onclickAttr = btn.getAttribute('onclick');
+                const match = onclickAttr && onclickAttr.match(/\/leaderboard\/(\w+)/);
+                if (match && match[1] === site) {
+                    btn.classList.add('gf-btn-active');
+                }
+            });
+        }
+
+        // Update site-specific content
+        function updateSiteContent() {
+            const site = getCurrentSite();
+            const config = siteConfig[site];
+
+            const codeBtn = document.getElementById('site-code');
+            codeBtn.textContent = `CODE: ${config.code}`;
+            codeBtn.onclick = () => window.open(config.url, '_blank');
+
+            const rulesBtn = document.getElementById('rules-btn');
+            if (site === 'rainbet') { 
+                rulesBtn.style.display = 'inline-block';
+            } else {
+                rulesBtn.style.display = 'none';
+            }
+
+            // Update coin icons for top 3 cards (wagered amount)
+            for (let i = 1; i <= 3; i++) {
+                const coinIcon = document.getElementById(`coin-icon-${i}`);
+                if (coinIcon) {
+                    if (config.coinIcon) {
+                        coinIcon.src = config.coinIcon;
+                        coinIcon.style.width = '20px';
+                        coinIcon.style.height = '20px';
+                        coinIcon.style.marginRight = '5px';
+                        coinIcon.style.display = 'inline';
+                    } else {
+                        coinIcon.style.display = 'none';
+                    }
+                }
+                // Prize coin icons will be handled dynamically in updateLeaderboard based on prize presence
+                const prizeCoinIcon = document.getElementById(`prize-coin-icon-${i}`);
+                if (prizeCoinIcon) {
+                    if (config.coinIcon) {
+                        prizeCoinIcon.src = config.coinIcon;
+                        prizeCoinIcon.style.width = '20px';
+                        prizeCoinIcon.style.height = '20px';
+                        prizeCoinIcon.style.marginRight = '5px';
+                        prizeCoinIcon.style.display = 'inline';
+                    } else {
+                        prizeCoinIcon.style.display = 'none';
+                    }
+                }
+            }
+            // Removed the line that sets the href for 'prev-results-link'
+            // document.getElementById('prev-results-link').href = `https://ecoraindata.onrender.com/prev`;
+        }
+
+        // Utility functions
+        const truncateText = (text, maxLength = 12) => {
+            return text?.length > maxLength ? text.substring(0, maxLength) + '...' : text;
+        };
+
+        // Function to get prize based on rank
+        function getPrizeForRank(rank, rewardStructure, coinSymbol) {
+            const prize = rewardStructure[rank];
+            if (prize !== undefined) {
+                return `${coinSymbol} ${prize.toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 })}`;
+            }
+            return 'N/A';
+        }
+
+        // Update leaderboard data
+        async function updateLeaderboard() {
+            try {
+                const site = getCurrentSite();
+                const response = await fetch(`https://ecoraindata.onrender.com/leaderboard/top14`);
+                const data = await response.json();
+                const config = siteConfig[site];
+
+                data.sort((a, b) => b.weightedWager - a.weightedWager);
+
+                // Update top 3 cards
+                for (let i = 1; i <= 3; i++) {
+                    const user = data[i - 1]; 
+                    const rank = i; // Current rank
+                    if (user) {
+                        document.getElementById(`user-${i}-img`).src = user.img || 'https://i.postimg.cc/sXFPrDBk/rainbetlogo.png';
+                        
+                        const wageredText = user.weightedWager.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+                        const wageredElement = document.getElementById(`user-${i}-wagered`);
+                        wageredElement.textContent = `${config.coinSymbol} ${wageredText}`;
+                        
+                        document.getElementById(`user-${i}-name`).textContent = truncateText(user.username);
+                        
+                        const priceElement = document.getElementById(`user-${i}-price`);
+                        const prizeCoinIcon = document.getElementById(`prize-coin-icon-${i}`);
+                        
+                        const prizeAmount = getPrizeForRank(rank, config.rewardStructure, config.coinSymbol);
+                        priceElement.textContent = prizeAmount;
+
+                        // Show/hide prize coin icon based on whether a prize is defined for the rank
+                        if (prizeAmount !== 'N/A' && config.coinIcon) {
+                            prizeCoinIcon.style.display = 'inline';
+                        } else {
+                            prizeCoinIcon.style.display = 'none';
+                        }
+
+                    } else {
+                        document.getElementById(`user-${i}-img`).src = 'https://i.postimg.cc/sXFPrDBk/rainbetlogo.png';
+                        document.getElementById(`user-${i}-name`).textContent = '...';
+                        document.getElementById(`user-${i}-wagered`).textContent = '0.00';
+                        document.getElementById(`user-${i}-price`).textContent = 'N/A';
+                        const prizeCoinIcon = document.getElementById(`prize-coin-icon-${i}`);
+                        if (prizeCoinIcon) prizeCoinIcon.style.display = 'none';
+                    }
+                }
+
+                // Update table for ranks beyond top 3
+                const table = document.getElementById('customers');
+                while (table.rows.length > 1) {
+                    table.deleteRow(1);
+                }
+
+                data.slice(3).forEach((user, index) => {
+                    const rank = index + 4; // Ranks start from 4 for the table
+                    const row = table.insertRow();
+                    row.innerHTML = `
+                        <th>${rank}.</th>
+                        <td>
+                            <div class="d-flex align-center">
+                                <img src="${user.img || 'https://i.postimg.cc/sXFPrDBk/rainbetlogo.png'}" alt="" class="img-fluid">
+                                <p>${truncateText(user.username)}</p>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="d-flex align-center">
+                                ${config.coinIcon ? `<img src="${config.coinIcon}" alt="" style="width: 20px; height: 20px; margin-right: 5px;">` : ''}
+                                <p>${config.coinSymbol} ${user.weightedWager.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="d-flex align-center">
+                                <p>${getPrizeForRank(rank, config.rewardStructure, config.coinSymbol)}</p>
+                            </div>
+                        </td>
+                    `;
+                });
+
+                updateCountdown(); 
+
+                const headingElement = document.getElementById('leaderboard-heading');
+                const siteName = config.name.toUpperCase();
+                headingElement.innerHTML = `${siteName} WAGER LEADERBOARD`;
+
+            } catch (error) {
+                console.error('Error updating leaderboard:', error);
+                document.getElementById('leaderboard-heading').textContent = 'Error loading leaderboard data.';
+            }
+        }
+
+        let timerInterval;
+
+        function updateCountdown() {
+            if (timerInterval) clearInterval(timerInterval);
+
+            const now = new Date();
+            let year = now.getUTCFullYear();
+            let month = now.getUTCMonth(); 
+
+            const lastDayOfCurrentMonth = new Date(Date.UTC(year, month + 1, 0, 23, 59, 59));
+            
+
+            function calculateAndDisplayTime() {
+                const currentTime = new Date().getTime();
+                const distance = lastDayOfCurrentMonth.getTime() - currentTime;
+
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                document.querySelector('.days').textContent = String(days).padStart(2, '0');
+                document.querySelector('.hours').textContent = String(hours).padStart(2, '0');
+                document.querySelector('.minutes').textContent = String(minutes).padStart(2, '0');
+                document.querySelector('.seconds').textContent = String(seconds).padStart(2, '0');
+
+                if (distance <= 0) {
+                    clearInterval(timerInterval);
+                    document.querySelector('.days').textContent = '00';
+                    document.querySelector('.hours').textContent = '00';
+                    document.querySelector('.minutes').textContent = '00';
+                    document.querySelector('.seconds').textContent = '00';
+                    document.getElementById('end-date-display').textContent = 'Leaderboard reset! Refreshing...';
+                    setTimeout(updateLeaderboard, 1000); 
+                }
+            }
+
+            calculateAndDisplayTime();
+            timerInterval = setInterval(calculateAndDisplayTime, 1000);
+        }
+
+        // Rules modal functionality
+        function openRulesModal() {
+            document.getElementById('rulesModal').classList.add('show');
+        }
+
+        function closeRulesModal() {
+            document.getElementById('rulesModal').classList.remove('show');
+        }
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            updateActiveButton();
+            updateSiteContent();
+            updateLeaderboard(); 
+            
+            const rulesBtn = document.getElementById('rules-btn');
+            if (rulesBtn) {
+                rulesBtn.addEventListener('click', openRulesModal);
+            }
+        });
+
+        // Event listener for popstate (when user navigates back/forward)
+        window.addEventListener('popstate', () => {
+            updateActiveButton();
+            updateSiteContent();
+            updateLeaderboard();
+        });
+
+    </script>
+</body>
+
+</html>
